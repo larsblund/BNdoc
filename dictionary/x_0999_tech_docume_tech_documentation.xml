@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Tech documentation" max_length="40" name="x_0999_tech_docume_tech_documentation" type="collection">
+        <element label="class" max_length="40" name="class" type="string"/>
+        <element label="Class Name" max_length="255" name="classname" type="string"/>
+        <element label="documentation" max_length="4000" name="documentation" type="string"/>
+        <element label="Last script" max_length="8000" name="last_script" type="script"/>
+        <element label="Name" max_length="200" name="name" type="string"/>
+        <element label="Script Sys ID" max_length="40" name="script_sys_id" type="string"/>
+        <element choice="1" label="Status of code" max_length="40" name="status_of_code" type="choice">
+            <choice>
+                <element label="DEV" sequence="0" value="DEV"/>
+                <element label="TEST" sequence="1" value="TEST"/>
+                <element label="PROD" sequence="2" value="PROD"/>
+                <element label="DELETED" sequence="3" value="DELETED"/>
+            </choice>
+        </element>
+        <element label="Update set" max_length="32" name="update_set" reference="sys_update_set" type="reference"/>
+        <index name="index">
+            <element name="update_set"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="x_0999_tech_docume_tech_documentation" label="Tech Doc Version" max_length="40" name="x_0999_tech_docume_tech_doc_version" type="collection">
+        <element label="Master script" max_length="32" name="master_script" reference="x_0999_tech_docume_tech_doc_masterdata" type="reference"/>
+        <index name="index">
+            <element name="master_script"/>
+        </index>
+    </element>
+</database>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update sys_domain="global" table="sys_app_module">
     <sys_app_module action="INSERT_OR_UPDATE">
-        <active>false</active>
+        <active>true</active>
         <application display_value="Tech Documentation">19d9a9170f9c0300fee3943be1050ea3</application>
         <assessment/>
         <content_page/>
@@ -12,10 +12,10 @@
         <image/>
         <link_type>LIST</link_type>
         <map_page/>
-        <mobile_title>Tech documentations</mobile_title>
+        <mobile_title>Tech Doc Versions</mobile_title>
         <mobile_view_name>Mobile</mobile_view_name>
-        <name>x_0999_tech_docume_tech_documentation</name>
-        <order>89</order>
+        <name>x_0999_tech_docume_tech_doc_version</name>
+        <order/>
         <override_menu_roles>false</override_menu_roles>
         <query/>
         <report/>
@@ -24,23 +24,23 @@
         <survey_overwrite>true</survey_overwrite>
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>lbl</sys_created_by>
-        <sys_created_on>2017-07-09 22:46:51</sys_created_on>
+        <sys_created_on>2017-08-05 22:34:41</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>384aaae20fff3200fee3943be1050e7a</sys_id>
-        <sys_mod_count>3</sys_mod_count>
-        <sys_name>Tech documentations</sys_name>
+        <sys_id>866a65570f9c0300fee3943be1050e6e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Tech Doc Versions</sys_name>
         <sys_overrides/>
         <sys_package display_value="Tech Documentation" source="x_0999_tech_docume">0939a2620fff3200fee3943be1050e99</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Tech Documentation">0939a2620fff3200fee3943be1050e99</sys_scope>
-        <sys_update_name>sys_app_module_384aaae20fff3200fee3943be1050e7a</sys_update_name>
+        <sys_update_name>sys_app_module_866a65570f9c0300fee3943be1050e6e</sys_update_name>
         <sys_updated_by>lbl</sys_updated_by>
-        <sys_updated_on>2017-08-06 00:04:56</sys_updated_on>
+        <sys_updated_on>2017-08-05 22:34:41</sys_updated_on>
         <timeline_page/>
-        <title>Tech documentations</title>
+        <title>Tech Doc Versions</title>
         <uncancelable>false</uncancelable>
         <view_name/>
         <window_name/>

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update>
-    <sys_documentation element="update_set" label="Update set" language="en" table="x_0999_tech_docume_tech_documentation">
+    <sys_documentation element="master_script" label="Master script" language="en" table="x_0999_tech_docume_tech_doc_version">
         <sys_documentation action="INSERT_OR_UPDATE">
-            <element>update_set</element>
+            <element>master_script</element>
             <help/>
             <hint/>
-            <label>Update set</label>
+            <label>Master script</label>
             <language>en</language>
-            <name>x_0999_tech_docume_tech_documentation</name>
-            <plural>Update sets</plural>
+            <name>x_0999_tech_docume_tech_doc_version</name>
+            <plural>Master scripts</plural>
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>lbl</sys_created_by>
-            <sys_created_on>2017-07-09 22:46:52</sys_created_on>
+            <sys_created_on>2017-08-05 23:13:43</sys_created_on>
             <sys_customer_update>true</sys_customer_update>
-            <sys_id>9d4aaae20fff3200fee3943be1050ec2</sys_id>
+            <sys_id>795375db0f9c0300fee3943be1050e00</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_name>Update set</sys_name>
+            <sys_name>Master script</sys_name>
             <sys_package display_value="Tech Documentation" source="x_0999_tech_docume">0939a2620fff3200fee3943be1050e99</sys_package>
             <sys_policy/>
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Tech Documentation">0939a2620fff3200fee3943be1050e99</sys_scope>
-            <sys_update_name>sys_documentation_x_0999_tech_docume_tech_documentation_update_set_en</sys_update_name>
+            <sys_update_name>sys_documentation_x_0999_tech_docume_tech_doc_version_master_script_en</sys_update_name>
             <sys_updated_by>lbl</sys_updated_by>
-            <sys_updated_on>2017-07-09 22:46:52</sys_updated_on>
+            <sys_updated_on>2017-08-05 23:13:43</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>

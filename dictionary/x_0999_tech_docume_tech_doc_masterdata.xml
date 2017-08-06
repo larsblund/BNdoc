@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="x_0999_tech_docume_tech_documentation" label="Tech Doc Masterdata" max_length="40" name="x_0999_tech_docume_tech_doc_masterdata" type="collection"/>
+</database>

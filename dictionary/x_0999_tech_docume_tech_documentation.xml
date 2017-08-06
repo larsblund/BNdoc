@@ -4,7 +4,7 @@
         <element label="class" max_length="40" name="class" type="string"/>
         <element label="Class Name" max_length="255" name="classname" type="string"/>
         <element label="documentation" max_length="4000" name="documentation" type="string"/>
-        <element label="Last script" max_length="8000" name="last_script" type="script"/>
+        <element label="The script" max_length="8000" name="last_script" type="script"/>
         <element label="Name" max_length="200" name="name" type="string"/>
         <element label="Script Sys ID" max_length="40" name="script_sys_id" type="string"/>
         <element choice="1" label="Status of code" max_length="40" name="status_of_code" type="choice">
@@ -15,9 +15,6 @@
                 <element label="DELETED" sequence="3" value="DELETED"/>
             </choice>
         </element>
-        <element label="Update set" max_length="32" name="update_set" reference="sys_update_set" type="reference"/>
-        <index name="index">
-            <element name="update_set"/>
-        </index>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
     </element>
 </database>

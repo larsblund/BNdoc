@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>&#13;
+The Master documentation instance&#13;
+(dev101010.service-now.com)</description>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_0999_tech_docume.Documentation_Master_Instance</name>
+        <read_roles>admin</read_roles>
+        <suffix>Documentation_Master_Instance</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>lbl</sys_created_by>
+        <sys_created_on>2017-08-05 19:09:02</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>ed5b785b0f1c0300fee3943be1050e59</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>x_0999_tech_docume.Documentation_Master_Instance</sys_name>
+        <sys_package display_value="Tech Documentation" source="x_0999_tech_docume">0939a2620fff3200fee3943be1050e99</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Tech Documentation">0939a2620fff3200fee3943be1050e99</sys_scope>
+        <sys_update_name>sys_properties_ed5b785b0f1c0300fee3943be1050e59</sys_update_name>
+        <sys_updated_by>lbl</sys_updated_by>
+        <sys_updated_on>2017-08-05 23:46:14</sys_updated_on>
+        <type>string</type>
+        <value>https://dev11010.service-now.com/</value>
+        <write_roles>admin</write_roles>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=ed5b785b0f1c0300fee3943be1050e59"/>
+</record_update>

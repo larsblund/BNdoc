@@ -2,6 +2,7 @@
 <database>
     <element extends="x_0999_tech_docume_tech_documentation" label="Tech Doc Version" max_length="40" name="x_0999_tech_docume_tech_doc_version" type="collection">
         <element label="Master script" max_length="32" name="master_script" reference="x_0999_tech_docume_tech_doc_masterdata" type="reference"/>
+        <element label="Qry" max_length="2000" name="qry" type="string"/>
         <index name="index">
             <element name="master_script"/>
         </index>

@@ -14,7 +14,7 @@
         <client_callable>false</client_callable>
         <collection>sys_script</collection>
         <condition/>
-        <description>Create documentation for scripted updates.&#13;
+        <description>Create documentation for scripted updates&#13;
 </description>
         <execute_function>false</execute_function>
         <filter_condition table="sys_script">scriptVALCHANGES^ORdescriptionVALCHANGES^ORnameVALCHANGES^EQ<item endquery="false" field="script" goto="false" newquery="false" operator="VALCHANGES" or="false" value=""/>
@@ -34,117 +34,25 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-	try{
 	
-		var version_sysid ="";
-		var record_sysid ="";
-		var gr = new GlideRecord("x_0999_tech_docume_tech_doc_version");
-		gr.addQuery("script_sys_id", current.sys_id);
-		gr.query();
-		if (gr.next()) {
-			// record exist in version
-			// updage record in version
-			gr.name = current.name;
-			gr.last_script= current.script;
-			if(current.description.length <1){
-				gr.documentation ="no description";
-			}else{
-				gr.documentation =current.description;
-			}
-			
-			gr.classname = current.sys_class_name.toString();
-			gr.script_sys_id=current.sys_id;
-			gr.status_of_code ="DEV";
-			version_sysid =gr.sys_id;
-			record_sysid= current.sys_id;
-			gr.master_script = maintain_masterdata(version_sysid,record_sysid );
-			gr.update();
-			
-		}else{
-			// create record in version
-			//
-			gr.initialize();
-			gr.name = current.name;
-			gr.last_script= current.script;
-			if(current.description.length<1){
-				gr.documentation="no description";
-			}else{
-				gr.documentation=current.description;
-			}
-			
-			gr.classname = current.sys_class_name.toString();
-			gr.script_sys_id=current.sys_id;
-			gr.status_of_code ="DEV";
-			
-			gr.insert();
-			version_sysid =gr.sys_id;
-			record_sysid= current.sys_id;
-			
-			var gr2 = new GlideRecord("x_0999_tech_docume_tech_doc_version");
-			gr2.get(version_sysid);
-			gr2.query();
-			if (gr2.next()) {
-				gr2.master_script = maintain_masterdata(version_sysid,record_sysid );
-				gr2.update();
-			}
-		}
-		
-	}catch(err){
-		gs.addErrorMessage("der er følgende fejl: " + err);
-	}
+var doc = new techDocumentation();
+doc.maintain_version(current); // c is current
+	
 	
 })(current, previous);
 
 
-function maintain_masterdata(version_sysid, record_sysid){
-	var master_sysid="";
-	//gs.addErrorMessage('sys id er ' + version_sysid + ' ' + record_sysid);
-	
-	var grv = new GlideRecord("x_0999_tech_docume_tech_doc_version");
-	grv.addQuery("script_sys_id", record_sysid);
-	grv.query();
-	if (grv.next()) {
-		
-	}
-	
-	var grm = new GlideRecord("x_0999_tech_docume_tech_doc_masterdata");
-	grm.addQuery("script_sys_id", record_sysid);
-	grm.query();
-	if (grm.next()) {
-		//compare
-	//	gs.addErrorMessage(" master findes allerede :-) do compare please");
-		
-		if ( gs.getProperty('x_0999_tech_docume.Documentation_Master_Instance')==gs.getProperty('glide.servlet.uri') ){
-			// instance is master
-	//   gs.addErrorMessage(' property match!!!');
-			grm.name =grv.name;
-			grm.documentation = grv.documentation;
-			grm.classname = grv.classname;
-			grm.script_sys_id=record_sysid;
-			grm.update();
-			master_sysid=grm.sys_id;
-		}else{
-		gs.addErrorMessage("Master not updated, since the version isn't maintained from the master instance");
 
-		}
-	//	gs.addInfoMessage('master sys id - update ' + master_sysid); 		
-	}else{
-		
-		//create master
-		grm.initialize();
-		grm.name =  grv.name;
-		grm.documentation = grv.documentation;
-		grm.classname = grv.classname;
-		grm.script_sys_id=record_sysid;
-		grm.insert();
-		master_sysid=grm.sys_id;
-	//	gs.addInfoMessage('master sys id - insert ' + master_sysid); 
-		
-	}
-	
-	return master_sysid;
-	
-}]]></script>
+
+
+
+
+
+
+
+
+
+]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>lbl</sys_created_by>
         <sys_created_on>2017-07-09 22:59:52</sys_created_on>
@@ -152,7 +60,7 @@ function maintain_masterdata(version_sysid, record_sysid){
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>9a7c26660fff3200fee3943be1050e07</sys_id>
-        <sys_mod_count>65</sys_mod_count>
+        <sys_mod_count>70</sys_mod_count>
         <sys_name>Business rule update</sys_name>
         <sys_overrides/>
         <sys_package display_value="Tech Documentation" source="x_0999_tech_docume">0939a2620fff3200fee3943be1050e99</sys_package>
@@ -161,7 +69,7 @@ function maintain_masterdata(version_sysid, record_sysid){
         <sys_scope display_value="Tech Documentation">0939a2620fff3200fee3943be1050e99</sys_scope>
         <sys_update_name>sys_script_9a7c26660fff3200fee3943be1050e07</sys_update_name>
         <sys_updated_by>lbl</sys_updated_by>
-        <sys_updated_on>2017-08-06 00:03:06</sys_updated_on>
+        <sys_updated_on>2017-08-15 21:51:16</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>

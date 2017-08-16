@@ -13,12 +13,30 @@
 // how to use this script include.
 var doc = new techDocumentation();
 doc.maintain_version(current); // c is current
-
 doc.doc_delete(current.sys_id);	
-
-
 */
 
+/*
+******************** 
+WEB SERVICE CALL,
+genkald for at hente script, hvis det ikke kan flyttes med
+******************** 
+
+var request = new sn_ws.RESTMessageV2();
+request.setEndpoint('https://dev11010.service-now.com/api/now/table/x_0999_tech_docume_tech_doc_version');
+request.setHttpMethod('POST');
+
+//Eg. UserName="admin", Password="admin" for this code sample.
+var user = 'admin';
+var password = 'admin';
+
+request.setBasicAuth(user,password);
+request.setRequestHeader("Accept","application/json");
+request.setRequestHeader('Content-Type','application/json');request.setRequestBody("{\"table\":\"t\",\"qry\":\"q\",\"classname\":\"c\",\"script_sys_id\":\"s\",\"status_of_code\":\"s\"}");
+var response = request.execute();
+gs.log(response.getBody());
+
+*/
 
 
 
@@ -184,7 +202,7 @@ try{
         <sys_created_on>2017-08-15 21:01:54</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>0293346a0fe40300fee3943be1050e0e</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>techDocumentation</sys_name>
         <sys_package display_value="Tech Documentation" source="x_0999_tech_docume">0939a2620fff3200fee3943be1050e99</sys_package>
         <sys_policy>read</sys_policy>
@@ -192,6 +210,6 @@ try{
         <sys_scope display_value="Tech Documentation">0939a2620fff3200fee3943be1050e99</sys_scope>
         <sys_update_name>sys_script_include_0293346a0fe40300fee3943be1050e0e</sys_update_name>
         <sys_updated_by>lbl</sys_updated_by>
-        <sys_updated_on>2017-08-15 22:07:31</sys_updated_on>
+        <sys_updated_on>2017-08-16 05:12:36</sys_updated_on>
     </sys_script_include>
 </record_update>

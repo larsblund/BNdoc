@@ -12,14 +12,14 @@
         <advanced>true</advanced>
         <change_fields>false</change_fields>
         <client_callable>false</client_callable>
-        <collection>sys_script_include</collection>
+        <collection>x_0999_tech_docume_tech_doc_version</collection>
         <condition/>
-        <description>Log insert and update on script include..</description>
+        <description>Maintain master data documentation.</description>
         <execute_function>false</execute_function>
         <filter_condition/>
         <is_rest>false</is_rest>
         <message/>
-        <name>Script include  update</name>
+        <name>Tech doc maintain</name>
         <order>100</order>
         <priority>100</priority>
         <rest_method/>
@@ -30,57 +30,57 @@
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
 	
-	// Add your code here
-
-	var doc = new techDocumentation();
-doc.maintain_version(current); // c is current
 	
-	/*
-	
-	
-	var gr = new GlideRecord("x_0999_tech_docume_tech_documentation");
-	gr.get(current.sys_id);
+	var gr = new GlideRecord("x_0999_tech_docume_tech_doc_masterdata");
+	gr.addQuery("script_sys_id", current.script_sys_id);
 	gr.query();
 	if (gr.next()) {
-		gr.name = current.name;
-		gr.last_script= current.script;
-		gr.documentation=current.description;
-		//gr.class='Script Include';
-		gr.update();
-	}else{
-		// rem
+				
+
+		current.master_script = gr.sys_id;
+		current.update();
 		
-		gr.initialize();
-		gr.name = current.name;
-		gr.last_script= current.script;
-		gr.documentation=current.description;
-	//	gr.class='Script Include';
-		gr.insert();
+	}else{		
 		
+		var mst = new GlideRecord("x_0999_tech_docume_tech_doc_masterdata");
+		mst.initialize();
+		mst.name = current.name;
+		mst.classname = current.classname;
+		mst.documentation = current.documentation;
+		mst.script_sys_id  = current.script_sys_id;
+		mst.insert();
 		
-		
+		current.master_script = mst.sys_id;
+		current.update();
 	}
-	*/
+	
+	
+	
+	
+	
+	
+	
+	
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
-        <sys_created_by>lbl</sys_created_by>
-        <sys_created_on>2017-07-09 23:02:45</sys_created_on>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-09-24 10:47:51</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>0eed22a60fff3200fee3943be1050e19</sys_id>
-        <sys_mod_count>7</sys_mod_count>
-        <sys_name>Script include  update</sys_name>
+        <sys_id>6e67e413db9d47008638f9b61d961938</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Tech doc maintain</sys_name>
         <sys_overrides/>
         <sys_package display_value="Tech Documentation" source="x_0999_tech_docume">0939a2620fff3200fee3943be1050e99</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Tech Documentation">0939a2620fff3200fee3943be1050e99</sys_scope>
-        <sys_update_name>sys_script_0eed22a60fff3200fee3943be1050e19</sys_update_name>
+        <sys_update_name>sys_script_6e67e413db9d47008638f9b61d961938</sys_update_name>
         <sys_updated_by>lbl</sys_updated_by>
-        <sys_updated_on>2017-09-25 11:35:49</sys_updated_on>
+        <sys_updated_on>2017-09-24 11:18:44</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>
-    <sys_translated_text action="delete_multiple" query="documentkey=0eed22a60fff3200fee3943be1050e19"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=6e67e413db9d47008638f9b61d961938"/>
 </record_update>

@@ -2,21 +2,21 @@
 <record_update table="sys_properties_category_m2m">
     <sys_properties_category_m2m action="INSERT_OR_UPDATE">
         <category display_value="Tech Documentation">79d93c1b0f1c0300fee3943be1050ef3</category>
-        <order>400</order>
-        <property display_value="x_0999_tech_docume.Documentation_Master_Instance" name="x_0999_tech_docume.Documentation_Master_Instance">ed5b785b0f1c0300fee3943be1050e59</property>
+        <order>500</order>
+        <property display_value="x_0999_tech_docume.source" name="x_0999_tech_docume.source">8193d0970f110300fee3943be1050e34</property>
         <sys_class_name>sys_properties_category_m2m</sys_class_name>
         <sys_created_by>lbl</sys_created_by>
-        <sys_created_on>2017-08-05 19:10:05</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
-        <sys_id>bc9bf09b0f1c0300fee3943be1050efd</sys_id>
-        <sys_mod_count>1</sys_mod_count>
-        <sys_name>x_0999_tech_docume.Documentation_Master_Instance.Tech Documentation</sys_name>
+        <sys_created_on>2017-09-24 10:01:13</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>9c7d98db0f110300fee3943be1050e09</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_0999_tech_docume.instance.Tech Documentation</sys_name>
         <sys_package display_value="Tech Documentation" source="x_0999_tech_docume">0939a2620fff3200fee3943be1050e99</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Tech Documentation">0939a2620fff3200fee3943be1050e99</sys_scope>
-        <sys_update_name>sys_properties_category_m2m_bc9bf09b0f1c0300fee3943be1050efd</sys_update_name>
+        <sys_update_name>sys_properties_category_m2m_9c7d98db0f110300fee3943be1050e09</sys_update_name>
         <sys_updated_by>lbl</sys_updated_by>
-        <sys_updated_on>2017-09-19 21:51:18</sys_updated_on>
+        <sys_updated_on>2017-09-24 10:01:13</sys_updated_on>
     </sys_properties_category_m2m>
 </record_update>

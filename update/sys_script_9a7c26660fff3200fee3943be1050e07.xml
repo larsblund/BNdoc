@@ -36,8 +36,7 @@
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
 	
 var doc = new techDocumentation();
-doc.maintain_version(current); // c is current
-	
+doc.maintain_version(current); 
 	
 })(current, previous);
 
@@ -60,7 +59,7 @@ doc.maintain_version(current); // c is current
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>9a7c26660fff3200fee3943be1050e07</sys_id>
-        <sys_mod_count>70</sys_mod_count>
+        <sys_mod_count>73</sys_mod_count>
         <sys_name>Business rule update</sys_name>
         <sys_overrides/>
         <sys_package display_value="Tech Documentation" source="x_0999_tech_docume">0939a2620fff3200fee3943be1050e99</sys_package>
@@ -69,7 +68,7 @@ doc.maintain_version(current); // c is current
         <sys_scope display_value="Tech Documentation">0939a2620fff3200fee3943be1050e99</sys_scope>
         <sys_update_name>sys_script_9a7c26660fff3200fee3943be1050e07</sys_update_name>
         <sys_updated_by>lbl</sys_updated_by>
-        <sys_updated_on>2017-08-15 21:51:16</sys_updated_on>
+        <sys_updated_on>2017-09-25 21:43:40</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>

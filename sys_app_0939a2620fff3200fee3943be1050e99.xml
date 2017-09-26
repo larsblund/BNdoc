@@ -7,14 +7,14 @@
         <licensable>true</licensable>
         <license_model>none</license_model>
         <logo/>
-        <menu/>
+        <menu display_value="Tech Documentation">19d9a9170f9c0300fee3943be1050ea3</menu>
         <name>Tech Documentation</name>
         <private>false</private>
         <restrict_table_access>false</restrict_table_access>
         <runtime_access_tracking>permissive</runtime_access_tracking>
         <scope>x_0999_tech_docume</scope>
         <scoped_administration>false</scoped_administration>
-        <short_description/>
+        <short_description>Access to documentation</short_description>
         <source>x_0999_tech_docume</source>
         <store_correlation_id/>
         <store_url/>
@@ -23,12 +23,12 @@
         <sys_created_by>lbl</sys_created_by>
         <sys_created_on>2017-07-09 22:42:14</sys_created_on>
         <sys_id>0939a2620fff3200fee3943be1050e99</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_updated_by>lbl</sys_updated_by>
-        <sys_updated_on>2017-07-09 22:42:14</sys_updated_on>
+        <sys_updated_on>2017-09-25 07:13:31</sys_updated_on>
         <template/>
         <trackable>true</trackable>
-        <user_role/>
+        <user_role display_value="x_0999_tech_docume.tech_documentation_user" name="x_0999_tech_docume.tech_documentation_user">284aee620fff3200fee3943be1050e3e</user_role>
         <vendor/>
         <vendor_prefix/>
         <version>1.0.0</version>

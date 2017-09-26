@@ -5,191 +5,41 @@
         <active>true</active>
         <api_name>x_0999_tech_docume.techDocumentation</api_name>
         <client_callable>false</client_callable>
-        <description>Libary used to maintain documentation &#13;
+        <description>Libary used to maintain documentation.&#13;
 </description>
         <name>techDocumentation</name>
         <script><![CDATA[/*
-
 // how to use this script include.
 var doc = new techDocumentation();
 doc.maintain_version(current); // c is current
-doc.doc_delete(current.sys_id);	
-*/
+doc.doc_delete(current.sys_id);
 
-/*
-******************** 
-WEB SERVICE CALL,
-genkald for at hente script, hvis det ikke kan flyttes med
-******************** 
-
-var request = new sn_ws.RESTMessageV2();
-request.setEndpoint('https://dev11010.service-now.com/api/now/table/x_0999_tech_docume_tech_doc_version');
-request.setHttpMethod('POST');
-
-//Eg. UserName="admin", Password="admin" for this code sample.
-var user = 'admin';
-var password = 'admin';
-
-request.setBasicAuth(user,password);
-request.setRequestHeader("Accept","application/json");
-request.setRequestHeader('Content-Type','application/json');request.setRequestBody("{\"table\":\"t\",\"qry\":\"q\",\"classname\":\"c\",\"script_sys_id\":\"s\",\"status_of_code\":\"s\"}");
-var response = request.execute();
-gs.log(response.getBody());
-
-*/
-
-
+ */
 
 var techDocumentation  = Class.create();
 techDocumentation.prototype = {
-    initialize: function() {
+	initialize: function() {
 		
-    },
-	
-	f1 : function(v1,v2) {
-		//Put function code here
-		
-		return null;
 	},
 	
-		doc_delete : function(c_s) {
-
-			var gr = new GlideRecord("x_0999_tech_docume_tech_doc_version");
-		gr.addQuery("script_sys_id", current.sys_id);
-		gr.query();
-		if (gr.next()) {
-		//	gr.name = current.name;
-		//	gr.last_script= current.script;
-		gr.status_of_code ="DELETED";
-			gr.update();
-		}
-		
-			
-	},
-	
-	
-	maintain_masterdata : function(version_sysid,record_sysid) {
-		//Put function code here
-		
-		
-		
-			var master_sysid="";
-	//gs.addErrorMessage('sys id er ' + version_sysid + ' ' + record_sysid);
-	
-	var grv = new GlideRecord("x_0999_tech_docume_tech_doc_version");
-	grv.addQuery("script_sys_id", record_sysid);
-	grv.query();
-	if (grv.next()) {
-		
-	}
-	
-	var grm = new GlideRecord("x_0999_tech_docume_tech_doc_masterdata");
-	grm.addQuery("script_sys_id", record_sysid);
-	grm.query();
-	if (grm.next()) {
-		//compare
-		//	gs.addErrorMessage(" master findes allerede :-) do compare please");
-		
-		if ( gs.getProperty('x_0999_tech_docume.Documentation_Master_Instance')==gs.getProperty('glide.servlet.uri') ){
-			// instance is master
-			//   gs.addErrorMessage(' property match!!!');
-			grm.name =grv.name;
-			grm.documentation = grv.documentation;
-			grm.classname = grv.classname;
-			grm.script_sys_id=record_sysid;
-			grm.update();
-			master_sysid=grm.sys_id;
-		}else{
-			gs.addErrorMessage("Master not updated, since the version isn't maintained from the master instance");
-			
-		}
-		//	gs.addInfoMessage('master sys id - update ' + master_sysid);
-	}else{
-		
-		//create master
-		grm.initialize();
-		grm.name =  grv.name;
-		grm.documentation = grv.documentation;
-		grm.classname = grv.classname;
-		grm.script_sys_id=record_sysid;
-		grm.insert();
-		master_sysid=grm.sys_id;
-		//	gs.addInfoMessage('master sys id - insert ' + master_sysid);
-		
-	}
-	
-	return master_sysid;
+	doc_delete : function(c) {		
+		gs.eventQueue("x_0999_tech_docume.m.deleted", null, c.sys_class_name.toString(), c.sys_id.toString());
 		
 	},
 	
 	
 	maintain_version : function(c) {// c : current
 		
-try{	
-		var version_sysid ="";
-		var record_sysid ="";
-		var gr = new GlideRecord("x_0999_tech_docume_tech_doc_version");
-		gr.addQuery("script_sys_id", c.sys_id);
-		gr.query();
-		if (gr.next()) {
-			// record exist in version
-			// updage record in version
-			gr.name = c.name;
-			gr.last_script= c.script;
-			if(c.description.length <1){
-				gr.documentation ="no description";
-			}else{
-				gr.documentation =c.description;
-			}
+		try{
+			gs.eventQueue("x_0999_tech_docume.m.updated", c, c.sys_class_name.toString(), c.sys_id.toString());
 			
-			
-			gr.table = c.collection;
-			gr.qry = c.filter_condition;
-			gr.classname = c.sys_class_name.toString();
-			gr.script_sys_id=c.sys_id;
-			gr.status_of_code ="DEV";
-			version_sysid =gr.sys_id;
-			record_sysid= c.sys_id;
-			gr.master_script = this.maintain_masterdata(version_sysid,record_sysid );
-			gr.update();
-			
-		}else{
-			// create record in version
-			//
-			gr.initialize();
-			gr.name = c.name;
-			gr.last_script= c.script;
-			if(c.description.length<1){
-				gr.documentation="no description";
-			}else{
-				gr.documentation=c.description;
-			}
-			
-			gr.table = c.collection;
-			gr.qry = c.filter_condition;
-			gr.classname = c.sys_class_name.toString();
-			gr.script_sys_id=c.sys_id;
-			gr.status_of_code ="DEV";
-			
-			gr.insert();
-			version_sysid =gr.sys_id;
-			record_sysid= c.sys_id;
-			
-			var gr2 = new GlideRecord("x_0999_tech_docume_tech_doc_version");
-			gr2.get(version_sysid);
-			gr2.query();
-			if (gr2.next()) {
-				gr2.master_script = this.maintain_masterdata(version_sysid,record_sysid );
-				gr2.update();
-			}
+		}catch(err){
+			gs.addErrorMessage("der er følgende fejl: " + err);
 		}
-	}catch(err){
-		gs.addErrorMessage("der er følgende fejl: " + err);
-	}			
 		
 	},
-
-    type: 'techDocumentation'
+	
+	type: 'techDocumentation'
 };
 
 
@@ -202,7 +52,7 @@ try{
         <sys_created_on>2017-08-15 21:01:54</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>0293346a0fe40300fee3943be1050e0e</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>36</sys_mod_count>
         <sys_name>techDocumentation</sys_name>
         <sys_package display_value="Tech Documentation" source="x_0999_tech_docume">0939a2620fff3200fee3943be1050e99</sys_package>
         <sys_policy>read</sys_policy>
@@ -210,6 +60,6 @@ try{
         <sys_scope display_value="Tech Documentation">0939a2620fff3200fee3943be1050e99</sys_scope>
         <sys_update_name>sys_script_include_0293346a0fe40300fee3943be1050e0e</sys_update_name>
         <sys_updated_by>lbl</sys_updated_by>
-        <sys_updated_on>2017-08-16 05:12:36</sys_updated_on>
+        <sys_updated_on>2017-09-26 12:18:22</sys_updated_on>
     </sys_script_include>
 </record_update>

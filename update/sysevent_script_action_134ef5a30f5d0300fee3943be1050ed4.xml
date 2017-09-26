@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sysevent_script_action">
+    <sysevent_script_action action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition_script/>
+        <description/>
+        <event_name>x_0999_tech_docume.m.deleted</event_name>
+        <name>tech doc deleted</name>
+        <order>100</order>
+        <script><![CDATA[web_service_delete();
+
+function jE(s) {
+	//Jason encode script
+	var str = new global.JSON().encode(s);
+	return str.substring(1, str.length - 1);
+}
+
+function web_service_delete(){
+	/*
+ 	********************
+	WEB SERVICE DOCUMENTATION MASTER STATUS DELETED
+ 	********************/
+	
+	var user = gs.getProperty("x_0999_tech_docume.usr") ;
+	var password = gs.getProperty("x_0999_tech_docume.Password");
+	var target = gs.getProperty("x_0999_tech_docume.Documentation_Master_Instance");
+	var source = gs.getProperty("x_0999_tech_docume.source");
+		
+	var sysid = 	get_record(user,password,target,event.parm2);
+	
+	
+	
+	var request = new sn_ws.RESTMessageV2();
+request.setEndpoint(target + '/api/now/table/x_0999_tech_docume_tech_doc_version/'+ sysid);
+request.setHttpMethod('PUT');
+
+
+request.setBasicAuth(user,password);
+request.setRequestHeader("Accept","application/json");
+request.setRequestHeader('Content-Type','application/json');request.setRequestBody("{\"status_of_code\":\"DELETED\"}");
+var response = request.execute();
+
+	
+}
+
+
+
+function get_record(u,p,t,s){
+	
+	var request = new sn_ws.RESTMessageV2();
+	request.setEndpoint(t +'/api/now/table/x_0999_tech_docume_tech_doc_version?sysparm_fields=sys_id&sysparm_limit=1&script_sys_id='+s);
+	request.setHttpMethod('GET');
+	request.setBasicAuth(u,p);
+	request.setRequestHeader("Accept","application/json");
+	
+	var response = request.execute();
+	var obj =JSON.parse(response.getBody());
+	var ret = obj.result[0].sys_id;
+	return ret.toString() ;
+	
+}
+
+
+
+
+
+
+
+]]></script>
+        <synchronous>false</synchronous>
+        <sys_class_name>sysevent_script_action</sys_class_name>
+        <sys_created_by>lbl</sys_created_by>
+        <sys_created_on>2017-09-25 11:42:53</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>134ef5a30f5d0300fee3943be1050ed4</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name>tech doc deleted</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Tech Documentation" source="x_0999_tech_docume">0939a2620fff3200fee3943be1050e99</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Tech Documentation">0939a2620fff3200fee3943be1050e99</sys_scope>
+        <sys_update_name>sysevent_script_action_134ef5a30f5d0300fee3943be1050ed4</sys_update_name>
+        <sys_updated_by>lbl</sys_updated_by>
+        <sys_updated_on>2017-09-26 12:16:57</sys_updated_on>
+    </sysevent_script_action>
+</record_update>
